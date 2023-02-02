@@ -253,8 +253,8 @@
     font-weight: 600;
   }
 
-  .redColor{
-    background-color: red;
+  .yellowColor{
+    background-color: yellow;
   }
 
   .blueColor{
@@ -361,7 +361,8 @@
   <h2>Macierz</h2>
 
   <div class="card-container">
-    <button mat-raised-button color="primary" (click)="dodajLiczby()">Generuj</button><br>
+    <button mat-raised-button color="primary" (click)="generujStanPoczatkowy()">Generuj</button><br>
+    <button mat-raised-button color="primary" (click)="mieszaj()">Mieszaj</button><br>
 
     <mat-form-field class="example-full-width">
       <mat-label>Liczba wierszy</mat-label>
@@ -372,9 +373,18 @@
       <input matInput type="number" [(ngModel)]="kolumny" placeholder="kolumny" value="">
     </mat-form-field>
   </div>
+  <div class="card-container" >
+    <span style="background-color:yellow; padding: 3px;">Lewa-Żółte: <b>{{cntLZ}}</b></span>
+    <span style="background-color:blue; color:white; padding: 3px">Lewa-Niebieskie: <b>{{cntLN}}</b></span>
+    <span style="background-color:yellow; padding: 3px">Prawa-Żółte: <b>{{cntRZ}}</b></span>
+    <span style="background-color:blue; color:white; padding: 3px">Prawa-Niebieskie: <b>{{cntRN}}</b></span>
+    </div>
   <div  class="card-container">
-    <span style="margin:4px;" *ngFor="let item of rows; let rIdx = index">
-    <span [ngClass]="{'redColor':cIdx < cols.length/2, 'blueColor':cIdx >= cols.length/2}" style="min-width: 10px !important;margin:4px; color:white;" *ngFor="let item of cols; let cIdx = index">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <!-- <span style="margin:4px;" *ngFor="let item of rows; let rIdx = index">
+    <span [ngClass]="{'redColor':cIdx < cols.length/2, 'blueColor':cIdx >= cols.length/2}" style="min-width: 10px !important;margin:4px; color:white;" *ngFor="let item of cols; let cIdx = index">&nbsp;&nbsp;{{item}}&nbsp;&nbsp;&nbsp;</span> -->
+
+    <span *ngFor="let tWiersz of tMacierz ">
+      <span *ngFor="let tKolumna of tWiersz" [ngClass]="tKolumna == 'z' ? 'yellowColor' : 'blueColor'" style="min-width: 10px !important;margin:4px; color:white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
   </span>
   </div>
 
