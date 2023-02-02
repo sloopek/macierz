@@ -65,7 +65,7 @@ export class AppComponent {
   mieszaj(){
 
     // przypisanie aktualnej liczby kolumn do losowania liczby losowej
-    this.maximum = this.kolumny;
+    this.maximum = this.kolumny-1;
 
     for(var i = 0; i < this.kolumny * 5; i++){
       // wykorzytujemy opóźnienie by pokazać animację elementów
